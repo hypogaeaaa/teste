@@ -1,0 +1,24 @@
+importar aleatório
+
+# lista com todas as dezenas possíveis
+dezenas = lista(intervalo(1, 26))
+
+# sorteia 15 dezenas
+jogo = random.sample(dezenas, 15)
+
+print(jogo)
+
+# abre o arquivo com os jogos salvos
+com open("jogos.txt") como arquivo:
+  # lê as linhas do arquivo e as divide em uma lista
+  jogos = arquivo.read().splitlines()
+
+# percorre cada jogo da lista
+para jogos_salvos em jogos:
+  # divide o jogo em uma lista de dezenas
+  dezenas_salvas = jogos_salvos.split()
+  #converte cada dezena em um número inteiro
+  dezenas_salvas = [int(dezena) por dezenas em dezenas_salvas]
+  # conta quantas dezenas o jogo sorteado tem em comum com o jogo salvo
+  acertos = len(set(jogo) & set(dezenas_salvas))
+  print(f"Jogo salvo: {dezenas_salvas} | Jogo sorteado: {jogo} | Acertos: {acertos}")
